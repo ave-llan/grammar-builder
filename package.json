@@ -23,5 +23,9 @@
   "homepage": "https://github.com/jrleszcz/grammar-builder#readme",
   "dependencies": {
     "grammar-graph": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-google": "^0.3.0"
   }
 }
