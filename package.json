@@ -1,0 +1,24 @@
+{
+  "name": "grammar-builder",
+  "version": "0.0.0",
+  "description": "a GUI for building and playing with context-free grammars",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrleszcz/grammar-builder.git"
+  },
+  "keywords": [
+    "grammar",
+    "context-free",
+    "grammar"
+  ],
+  "author": "John Leszczynski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrleszcz/grammar-builder/issues"
+  },
+  "homepage": "https://github.com/jrleszcz/grammar-builder#readme"
+}
