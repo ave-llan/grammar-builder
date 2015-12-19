@@ -3,12 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Grammar Builder</title>
-    <link href="bundle.css" rel="stylesheet">
-    <script type="text/javascript" src="bundle.js"></script>
+    <link href="css/bundle.css" rel="stylesheet">
+    <script type="text/javascript" src="js/bundle.js"></script>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
   </head>
-  <body>
+  <body ng-controller="grammarBuilderCtrl">
+    <h1>Hello, world of live editing! hola!</h1>
+    <p>2 * 3 = {{ 2 * 3}}</p>
+    <p>{{ message }}</p>
+    <ul>
+      <li ng-repeat"v in vertices">
+        {{v}}
+      </li>
+    </ul>
     <div ui-view></div>
   </body>
 </html>
