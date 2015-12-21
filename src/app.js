@@ -37,13 +37,13 @@ grammarBuilderApp.controller('grammarBuilderCtrl',function($scope, $interval) {
     }
   }
 
-  function generateRandomSentence (guide) {
-    while (guide.choices() && !guide.isComplete()) {
-      var choices = guide.choices();
-      guide.choose(choices[Math.floor(Math.random() * choices.length)]);
-    }
-    return guide.construction().join(' ');
-  }
+  // function generateRandomSentence (guide) {
+  //   while (guide.choices() && !guide.isComplete()) {
+  //     var choices = guide.choices();
+  //     guide.choose(choices[Math.floor(Math.random() * choices.length)]);
+  //   }
+  //   return guide.construction().join(' ');
+  // }
 
   $interval(addWord, 400);
 });
