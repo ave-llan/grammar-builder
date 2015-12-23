@@ -2,9 +2,11 @@
 var angular = require('angular');
 var GrammarGraph = require('grammar-graph');
 
-var grammarBuilderApp = angular.module('grammarBuilder', []);
+var grammarBuilderApp = angular.module('grammarBuilder', [
+  require('angular-ui-router')
+]);
 
-grammarBuilderApp.controller('grammarBuilderCtrl',function($scope, $interval) {
+grammarBuilderApp.controller('BuilderCtrl', function($scope, $interval) {
   $scope.message = 'this message brought to you from an Angular controller';
 
   var grammar = {
@@ -47,3 +49,5 @@ grammarBuilderApp.controller('grammarBuilderCtrl',function($scope, $interval) {
 
   $interval(addWord, 400);
 });
+
+grammarBuilderApp.config(require('./app.routes.js'));
