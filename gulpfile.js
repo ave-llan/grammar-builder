@@ -4,6 +4,7 @@ var gulp         = require('gulp')
   , browserify   = require('browserify')
   , uglify       = require('gulp-uglify')
   , rename       = require('gulp-rename')
+  , flatten      = require('gulp-flatten')
   , sass         = require('gulp-sass')
   , autoprefixer = require('gulp-autoprefixer')
   , eslint       = require('gulp-eslint')
@@ -11,7 +12,7 @@ var gulp         = require('gulp')
 
 // using vinyl-source-stream:
 gulp.task('browserify', function () {
-  var bundleStream = browserify('./src/app/app.js').bundle();
+  var bundleStream = browserify('./src/app/app.module.js').bundle();
 
   bundleStream
     .pipe(source('index.js'))
@@ -23,6 +24,9 @@ gulp.task('browserify', function () {
 gulp.task('copy-html', function () {
   gulp.src('./src/index.html')
     .pipe(gulp.dest('dist'));
+  gulp.src('./src/app/**/*.html')
+    .pipe(flatten())
+    .pipe(gulp.dest('./dist/partials'));
 });
 
 gulp.task('copy-images', function () {
