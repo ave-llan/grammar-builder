@@ -65,7 +65,7 @@ gulp.task('lint', function () {
 });
 
 gulp.task('default', ['copy-html', 'copy-images', 'styles', 'lint', 'browserify'], function () {
-  gulp.watch('src/sass/**/*.scss', ['styles']);
+  gulp.watch('src/assets/sass/**/*.scss', ['styles']);
   gulp.watch('src/**/*.js', ['lint', 'browserify']);
   gulp.watch('src/**/*.html', ['copy-html']);
   browserSync.init({
