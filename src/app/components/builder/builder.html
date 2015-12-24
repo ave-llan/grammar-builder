@@ -2,8 +2,8 @@
 
 <h2>Build your grammar here</h2>
 
-<form ng-submit="addNewDefinition()">
-  <input ng-model="newNonTerminal" type="text"> -> <input ng-model="newDefinition" type="text"> <input type="submit">
+<form ng-submit="addNewDefinition(newNonTerminal, newDefinition)">
+  <input ng-model="symbol" type="text" placeholder="symbol"> -> <input ng-model="newDefinition" type="text" placeholder="definition"> <input type="submit" value="Define">
 </form>
 
 <pre>{{grammar | json:4}}</pre>
