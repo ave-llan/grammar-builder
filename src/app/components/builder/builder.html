@@ -1,10 +1,15 @@
 <h3>Your Grammar</h3>
 
 <h2>Build your grammar here</h2>
+Starting Symbol:
+<select ng-model="startSymbol">
+  <option ng-repeat="(symbol, _) in grammar">{{ symbol }}</option>
+</select>
 <table>
   <tr ng-repeat="(symbol, definitions) in grammar">
     <td>
-      <span class="non-terminal definition">{{ symbol }}</span>
+      <span class="non-terminal definition"
+            ng-class="{'start-symbol': (symbol == startSymbol)}">{{ symbol }}</span>
     </td>
     <td>
       <i class="material-icons"

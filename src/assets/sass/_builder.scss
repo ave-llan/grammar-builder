@@ -1,5 +1,6 @@
 $non-terminal-color: #3182bd;
 $symbol-color: #8E8E8E;
+$start-symbol: #31a354;
 
 .definition-form {
   input[type=text] {
@@ -35,4 +36,8 @@ span.non-terminal {
 
 .non-terminal.definition {
   font-size: 1.3rem;
+}
+
+span.non-terminal.start-symbol {
+  color: $start-symbol;
 }
