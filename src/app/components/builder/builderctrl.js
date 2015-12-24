@@ -6,7 +6,9 @@ var BuilderCtrl = [ '$scope', '$interval',
     $scope.grammar = {};
 
     $scope.addNewDefinition = function (symbol, definition) {
-      console.log('you submitted:', symbol, definition);
+      if (!(symbol in $scope.grammar))
+        $scope.grammar[symbol] = [];
+      $scope.grammar[symbol].push(definition);
     };
 
     // var grammar = {
