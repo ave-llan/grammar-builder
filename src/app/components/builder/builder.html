@@ -1,13 +1,17 @@
 <h3>Your Grammar</h3>
 
 <h2>Build your grammar here</h2>
-<ul>
-  <div ng-repeat="(symbol, definitions) in grammar">
-    <li ng-repeat="definition in definitions">
-      <span class='non-terminal'>{{ symbol }}</span> -> {{definition}}
-    </li>
-  </div>
-</ul>
+<table>
+  <tr ng-repeat="(symbol, definitions) in grammar">
+    <td>{{ symbol }}</td>
+    <td>-></td>
+    <td>
+      <p ng-repeat="definition in definitions">
+        {{definition}}
+      </p>
+    </td>
+  </tr>
+</table>
 <form ng-submit="addNewDefinition(symbol, definition)">
   <input ng-model="symbol" type="text" placeholder="symbol"> -> <input ng-model="definition" type="text" placeholder="definition"> <input type="submit" value="Define">
 </form>
