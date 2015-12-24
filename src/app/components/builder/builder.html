@@ -3,8 +3,12 @@
 <h2>Build your grammar here</h2>
 <table>
   <tr ng-repeat="(symbol, definitions) in grammar">
-    <td>{{ symbol }}</td>
-    <td>-></td>
+    <td>
+      {{ symbol }}
+    </td>
+    <td>
+      <i class="material-icons">arrow_forward</i>
+    </td>
     <td>
       <p ng-repeat="definition in definitions">
         {{definition}}
@@ -13,7 +17,7 @@
   </tr>
 </table>
 <form ng-submit="addNewDefinition(symbol, definition)">
-  <input ng-model="symbol" type="text" placeholder="symbol"> -> <input ng-model="definition" type="text" placeholder="definition"> <input type="submit" value="Define">
+  <input ng-model="symbol" type="text" placeholder="symbol"> <i class="material-icons">arrow_forward</i> <input ng-model="definition" type="text" placeholder="definition"> <input type="submit" value="Define">
 </form>
 
 <pre>{{grammar | json:4}}</pre>
