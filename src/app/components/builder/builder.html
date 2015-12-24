@@ -1,11 +1,14 @@
 <h3>Your Grammar</h3>
 
 <h2>Build your grammar here</h2>
-Starting Symbol:
-<select ng-model="startSymbol"
-        ng-change="generateRandomSentence()">
-  <option ng-repeat="(symbol, _) in grammar">{{ symbol }}</option>
-</select>
+
+<div ng-show="startSymbol">
+  Starting Symbol:
+  <select ng-model="startSymbol"
+          ng-change="generateRandomSentence()">
+    <option ng-repeat="(symbol, _) in grammar">{{ symbol }}</option>
+  </select>
+</div>
 <table>
   <tr ng-repeat="(symbol, definitions) in grammar">
     <td>
