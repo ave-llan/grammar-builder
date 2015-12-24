@@ -9,6 +9,7 @@ var BuilderCtrl = [ '$scope', '$interval',
       if (!(symbol in $scope.grammar))
         $scope.grammar[symbol] = [];
       $scope.grammar[symbol].push(definition);
+      $scope.definition = ''; // clear definition but leave symbol
     };
 
     // var grammar = {
