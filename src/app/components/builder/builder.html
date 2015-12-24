@@ -4,7 +4,7 @@
 <table>
   <tr ng-repeat="(symbol, definitions) in grammar">
     <td>
-      {{ symbol }}
+      <span class="non-terminal definition">{{ symbol }}</span>
     </td>
     <td>
       <i class="material-icons"
@@ -12,7 +12,8 @@
     </td>
     <td>
       <p ng-repeat="definition in definitions">
-        {{definition}}
+        <span ng-repeat="subDef in definition.split(' ')"
+              ng-class="{'non-terminal': isNonTerminal(subDef) }">{{ subDef }} </span>
       </p>
     </td>
   </tr>

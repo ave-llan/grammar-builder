@@ -12,6 +12,14 @@ var BuilderCtrl = [ '$scope', '$interval',
       $scope.definition = ''; // clear definition but leave symbol
     };
 
+    // is the given symbol a non-terminal?
+    $scope.isNonTerminal = function (symbol) {
+      console.log('inside isNonTerminal');
+      return (symbol in $scope.grammar);
+    };
+
+
+
     // var grammar = {
     //   Sentence: ['NounPhrase VerbPhrase'],
     //   NounPhrase: ['the Noun',

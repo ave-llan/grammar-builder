@@ -6,6 +6,7 @@
     border-bottom: 2px solid #BFBFBF;
     &#symbol {
       width: 8rem;
+      color: blue;
     }
     &#definition {
       width: 30rem;
@@ -18,4 +19,13 @@
 
 #definition-arrow {
   color: #8E8E8E;
+  margin: 0 1rem;
+}
+
+span.non-terminal {
+  color: blue;
+}
+
+.non-terminal.definition {
+  font-size: 1.3rem;
 }
