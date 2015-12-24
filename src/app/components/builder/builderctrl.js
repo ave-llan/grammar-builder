@@ -20,7 +20,7 @@ var BuilderCtrl = [ '$scope', '$interval',
       $scope.grammar[symbol].push(definition);
       $scope.definition = '';                               // clear definition but leave symbol
 
-      generateRandomSentence();
+      $scope.generateRandomSentence();
     };
 
     // is the given symbol a non-terminal?
@@ -68,7 +68,7 @@ var BuilderCtrl = [ '$scope', '$interval',
       }
     }
 
-    function generateRandomSentence () {
+    $scope.generateRandomSentence = function () {
       console.log('canceling interval inside generateRandomSentence');
       $interval.cancel(sentenceInterval);
       graph = new GrammarGraph($scope.grammar); // refresh guide
@@ -76,7 +76,7 @@ var BuilderCtrl = [ '$scope', '$interval',
 
       $scope.sentence = '';
       sentenceInterval = $interval(addWord, 1000);
-    }
+    };
   }
 ];
 
