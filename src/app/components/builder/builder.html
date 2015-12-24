@@ -1,4 +1,11 @@
 <h3>Your Grammar</h3>
+
+<h2>Build your grammar here</h2>
+
+<form ng-submit="addNewDefinition()">
+  <input ng-model="newNonTerminal" type="text"> -> <input ng-model="newDefinition" type="text"> <input type="submit">
+</form>
+
 <pre>{{grammar | json:4}}</pre>
 
 <h3>The vertices in your grammar graph:</h3>

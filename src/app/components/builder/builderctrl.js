@@ -3,23 +3,23 @@ var GrammarGraph = require('grammar-graph');
 var BuilderCtrl = [ '$scope', '$interval',
   function($scope, $interval) {
     $scope.message = 'this message brought to you from an Angular controller';
-
-    var grammar = {
-      Sentence: ['NounPhrase VerbPhrase'],
-      NounPhrase: ['the Noun',
-             'the Noun RelativeClause'],
-      VerbPhrase: ['Verb',
-             'Verb NounPhrase'],
-      RelativeClause: ['that VerbPhrase'],
-      Noun: ['dog',
-             'cat',
-             'bird',
-             'squirrel'],
-      Verb: ['befriended',
-             'loved',
-             'ate',
-             'attacked']
-    };
+    var grammar = {};
+    // var grammar = {
+    //   Sentence: ['NounPhrase VerbPhrase'],
+    //   NounPhrase: ['the Noun',
+    //          'the Noun RelativeClause'],
+    //   VerbPhrase: ['Verb',
+    //          'Verb NounPhrase'],
+    //   RelativeClause: ['that VerbPhrase'],
+    //   Noun: ['dog',
+    //          'cat',
+    //          'bird',
+    //          'squirrel'],
+    //   Verb: ['befriended',
+    //          'loved',
+    //          'ate',
+    //          'attacked']
+    // };
     var graph = new GrammarGraph(grammar);
     $scope.grammar = grammar;
     var guide = graph.createGuide('Sentence');
@@ -42,7 +42,7 @@ var BuilderCtrl = [ '$scope', '$interval',
     //   return guide.construction().join(' ');
     // }
 
-    $interval(addWord, 400);
+    // $interval(addWord, 400);
   }
 ];
 
