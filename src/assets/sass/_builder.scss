@@ -1,3 +1,6 @@
+$non-terminal-color: #3182bd;
+$symbol-color: #8E8E8E;
+
 .definition-form {
   input[type=text] {
     font-family: "PT sans", sans-serif;
@@ -6,7 +9,11 @@
     border-bottom: 2px solid #BFBFBF;
     &#symbol {
       width: 8rem;
-      color: blue;
+      color: $non-terminal-color;
+      &::placeholder {
+        color: $non-terminal-color;
+        opacity: 0.4;
+      }
     }
     &#definition {
       width: 30rem;
@@ -18,12 +25,12 @@
 }
 
 #definition-arrow {
-  color: #8E8E8E;
+  color: $symbol-color;
   margin: 0 1rem;
 }
 
 span.non-terminal {
-  color: blue;
+  color: $non-terminal-color;
 }
 
 .non-terminal.definition {
