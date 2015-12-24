@@ -10,6 +10,7 @@ var BuilderCtrl = [ '$scope', '$interval',
     // add a new definition to grammar and refresh guide
     $scope.addNewDefinition = function (symbol, definition) {
       if (!(symbol && definition)) return;
+      if (!$scope.startSymbol) $scope.startSymbol = symbol; // initialize
       if (!(symbol in $scope.grammar))
         $scope.grammar[symbol] = [];
       $scope.grammar[symbol].push(definition);
