@@ -6,6 +6,7 @@ var BuilderCtrl = [ '$scope', '$interval',
     $scope.grammar = {};
     $scope.startSymbol;      // where should guides start their construction?
     $scope.sentence;         // a sample sentence from this grammar
+
     var graph;               // a grammarGraph made with current grammar
     var guide;               // the current guide
     var sentenceInterval;    // sentence refresh promosie
@@ -18,9 +19,6 @@ var BuilderCtrl = [ '$scope', '$interval',
         $scope.grammar[symbol] = [];                        // initialize this non-terminal
       $scope.grammar[symbol].push(definition);
       $scope.definition = '';                               // clear definition but leave symbol
-
-      graph = new GrammarGraph($scope.grammar); // refresh guide
-      guide = graph.createGuide($scope.startSymbol);
 
       generateRandomSentence();
     };
@@ -55,21 +53,30 @@ var BuilderCtrl = [ '$scope', '$interval',
     // $scope.sentence = '';
     // $scope.vertices = graph.vertices();
     function addWord () {
-      if (guide.choices()) {
+      console.log('trying to add word');
+      if (guide.choices().length > 0) {
         var choices = guide.choices();
         var choice = choices[Math.floor(Math.random() * choices.length)];
         guide.choose(choice);
         $scope.sentence += ' ' + choice;
+      } else {
+        $interval.cancel(sentenceInterval);
+        console.log('addWord stopped interval');
+        if (guide.isComplete()) {
+          $scope.sentence += '.'; // if complete, add period.
+        }
       }
     }
 
     function generateRandomSentence () {
-      $scope.sentence = '';
+      console.log('canceling interval inside generateRandomSentence');
       $interval.cancel(sentenceInterval);
-      $interval(addWord, 1000);
-    }
+      graph = new GrammarGraph($scope.grammar); // refresh guide
+      guide = graph.createGuide($scope.startSymbol);
 
-    // $interval(addWord, 400);
+      $scope.sentence = '';
+      sentenceInterval = $interval(addWord, 1000);
+    }
   }
 ];
 
