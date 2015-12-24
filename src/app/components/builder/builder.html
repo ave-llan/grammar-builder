@@ -7,7 +7,8 @@
       {{ symbol }}
     </td>
     <td>
-      <i class="material-icons">arrow_forward</i>
+      <i class="material-icons"
+         id="definition-arrow">arrow_forward</i>
     </td>
     <td>
       <p ng-repeat="definition in definitions">
@@ -23,7 +24,8 @@
          ng-model="symbol"
          type="text"
          placeholder="symbol">
-  <i class="material-icons">arrow_forward</i>
+  <i class="material-icons"
+     id="definition-arrow">arrow_forward</i>
   <input id="definition"
          ng-model="definition"
          type="text"
