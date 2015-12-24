@@ -18,7 +18,7 @@ Starting Symbol:
     </td>
     <td>
       <p ng-repeat="definition in definitions">
-        <span ng-repeat="subDef in definition.split(' ')"
+        <span ng-repeat="subDef in definition.split(' ') track by $index"
               ng-class="{'non-terminal': isNonTerminal(subDef) }">{{ subDef }} </span>
       </p>
     </td>
