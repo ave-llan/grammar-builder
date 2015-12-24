@@ -1,0 +1,17 @@
+.definition-form {
+  input[type=text] {
+    font-family: "PT sans", sans-serif;
+    font-size: 1.3rem;
+    border: none;
+    border-bottom: 2px solid #BFBFBF;
+    &#symbol {
+      width: 8rem;
+    }
+    &#definition {
+      width: 30rem;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

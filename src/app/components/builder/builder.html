@@ -16,8 +16,19 @@
     </td>
   </tr>
 </table>
-<form ng-submit="addNewDefinition(symbol, definition)">
-  <input ng-model="symbol" type="text" placeholder="symbol"> <i class="material-icons">arrow_forward</i> <input ng-model="definition" type="text" placeholder="definition"> <input type="submit" value="Define">
+<form ng-submit="addNewDefinition(symbol, definition)"
+      class="definition-form">
+  <input id="symbol"
+         ng-model="symbol"
+         type="text"
+         placeholder="symbol">
+  <i class="material-icons">arrow_forward</i>
+  <input id="definition"
+         ng-model="definition"
+         type="text"
+         placeholder="definition">
+  <input type="submit"
+         value="Define">
 </form>
 
 <pre>{{grammar | json:4}}</pre>
