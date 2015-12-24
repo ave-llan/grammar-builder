@@ -28,32 +28,8 @@ var BuilderCtrl = [ '$scope', '$interval',
       return (symbol in $scope.grammar);
     };
 
-
-
-
-    // var grammar = {
-    //   Sentence: ['NounPhrase VerbPhrase'],
-    //   NounPhrase: ['the Noun',
-    //          'the Noun RelativeClause'],
-    //   VerbPhrase: ['Verb',
-    //          'Verb NounPhrase'],
-    //   RelativeClause: ['that VerbPhrase'],
-    //   Noun: ['dog',
-    //          'cat',
-    //          'bird',
-    //          'squirrel'],
-    //   Verb: ['befriended',
-    //          'loved',
-    //          'ate',
-    //          'attacked']
-    // };
-    // var graph = new GrammarGraph(grammar);
-    // $scope.grammar = grammar;
-    // var guide = graph.createGuide('Sentence');
-    // $scope.sentence = '';
-    // $scope.vertices = graph.vertices();
+    // add a word to the sample sentence
     function addWord () {
-      console.log('trying to add word');
       if (guide.choices().length > 0) {
         var choices = guide.choices();
         var choice = choices[Math.floor(Math.random() * choices.length)];
@@ -61,7 +37,6 @@ var BuilderCtrl = [ '$scope', '$interval',
         $scope.sentence += ' ' + choice;
       } else {
         $interval.cancel(sentenceInterval);
-        console.log('addWord stopped interval');
         if (guide.isComplete()) {
           $scope.sentence += '.'; // if complete, add period.
         }
@@ -69,7 +44,6 @@ var BuilderCtrl = [ '$scope', '$interval',
     }
 
     $scope.generateRandomSentence = function () {
-      console.log('canceling interval inside generateRandomSentence');
       $interval.cancel(sentenceInterval);
       graph = new GrammarGraph($scope.grammar); // refresh guide
       guide = graph.createGuide($scope.startSymbol);
