@@ -19,6 +19,7 @@
 <form ng-submit="addNewDefinition(symbol, definition)"
       class="definition-form">
   <input id="symbol"
+         onClick="this.select();"
          ng-model="symbol"
          type="text"
          placeholder="symbol">
