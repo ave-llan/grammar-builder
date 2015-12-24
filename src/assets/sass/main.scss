@@ -1,11 +1,17 @@
 @charset "UTF-8";
 
 @import url(https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif:400,700,400italic);
-@import './_test';
+@import './_builder';
 
 /* avoid landscape zoom-in on mobile */
 html {
   -webkit-text-size-adjust: none;
+}
+
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 body {
