@@ -6,6 +6,7 @@ var BuilderCtrl = [ '$scope', '$interval',
     $scope.grammar = {};
 
     $scope.addNewDefinition = function (symbol, definition) {
+      if (!(symbol && definition)) return;
       if (!(symbol in $scope.grammar))
         $scope.grammar[symbol] = [];
       $scope.grammar[symbol].push(definition);
@@ -14,7 +15,6 @@ var BuilderCtrl = [ '$scope', '$interval',
 
     // is the given symbol a non-terminal?
     $scope.isNonTerminal = function (symbol) {
-      console.log('inside isNonTerminal');
       return (symbol in $scope.grammar);
     };
 
