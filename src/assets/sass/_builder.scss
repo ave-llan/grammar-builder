@@ -41,3 +41,13 @@ span.non-terminal {
 span.non-terminal.start-symbol {
   color: $start-symbol;
 }
+
+input.definition {
+  font-family: "PT Serif", serif;
+  font-size: 0.9rem;
+  border: none;
+  width: 300px;
+  &:focus {
+      outline: none;
+    }
+}

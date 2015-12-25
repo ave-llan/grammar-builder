@@ -28,6 +28,16 @@ var BuilderCtrl = [ '$scope', '$interval',
       return (symbol in $scope.grammar);
     };
 
+    $scope.editNonTerminal = function (nonTerminal) {
+      console.log('you clicked', nonTerminal);
+    };
+
+    // update the definition of a symbol at the given index
+    $scope.changeDefinition = function (symbol, index, definition) {
+      $scope.grammar[symbol][index] = definition;
+      $scope.generateRandomSentence(); // make new sentence
+    };
+
     // add a word to the sample sentence
     function addWord () {
       if (guide.choices().length > 0) {
