@@ -66,3 +66,25 @@
 
 <pre>{{grammar | json:4}}</pre>
 
+<h3>Sample Definition Directives</h3>
+<table>
+  <tr ng-repeat="(symbol, definitions) in grammar">
+    <td>
+      <a ng-click="editNonTerminal(symbol)">
+        <span class="non-terminal definition"
+                    ng-class="{'start-symbol': (symbol == startSymbol)}">{{ symbol }}</span>
+      </a>
+    </td>
+    <td>
+      <i class="material-icons"
+         id="definition-arrow">arrow_forward</i>
+    </td>
+    <td>
+      <p ng-repeat="definition in definitions track by $index">
+        <definition definition="definition">
+        </definition>
+      </p>
+    </td>
+  </tr>
+</table>
+
