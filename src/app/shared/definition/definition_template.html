@@ -1,4 +1,7 @@
-<input ng-repeat="definitionPart in definitionParts track by $index"
-       ng-model="definitionPart"
-       ng-change="changeDefinition($index, definitionPart)"
-       class="definitionPart">
+<span ng-repeat="definitionPart in definitionParts track by $index"
+      contenteditable="true"
+      ng-model="definitionPart"
+      ng-change="changeDefinition($index, definitionPart)"
+      class="definitionPart">
+      {{ definitionPart }}
+</span>
