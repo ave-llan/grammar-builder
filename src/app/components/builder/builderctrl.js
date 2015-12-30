@@ -3,7 +3,7 @@ var GrammarGraph = require('grammar-graph');
 var BuilderCtrl = [ '$scope', '$interval',
   function($scope , $interval ) {
     $scope.message = 'this message brought to you from an Angular controller';
-    $scope.grammar = {};
+    $scope.grammar = {Animal: ['Dog', 'Cat', 'Horse'], 'Dog': ['Husky', 'Weimaraner', 'Chihuahua']};
     $scope.startSymbol;      // where should guides start their construction?
     $scope.sentence;         // a sample sentence from this grammar
 
