@@ -4,107 +4,35 @@
 
 var angular = require('angular');
 
-module.exports = ['$timeout',
-  function($timeout) { return {
-    restrict: 'A',
-    require: '?ngModel',
+angular.module('customControl', ['ngSanitize']).
+directive('contenteditable', ['$sce', function($sce) {
+  return {
+    restrict: 'A', // only activate on element attribute
+    require: '?ngModel', // get a hold of NgModelController
     link: function(scope, element, attrs, ngModel) {
-      // don't do anything unless this is actually bound to a model
-      if (!ngModel) {
-        return;
-      }
+      if (!ngModel) return; // do nothing if no ng-model
 
-      // options
-      var opts = {};
-      [
-        'stripBr',
-        'noLineBreaks',
-        'selectNonEditable',
-        'moveCaretToEndOnChange',
-        'stripTags'
-      ].forEach(function(opt) {
-        var o = attrs[opt];
-        opts[opt] = o && o !== 'false';
-      });
-
-      // view -> model
-      element.bind('input', function() {
-        scope.$apply(function() {
-          var html, html2, rerender;
-          html = element.html();
-          rerender = false;
-          if (opts.stripBr) {
-            html = html.replace(/<br>$/, '');
-          }
-          if (opts.noLineBreaks) {
-            html2 = html.replace(/<div>/g, '').replace(/<br>/g, '').replace(/<\/div>/g, '');
-            if (html2 !== html) {
-              rerender = true;
-              html = html2;
-            }
-          }
-          if (opts.stripTags) {
-            rerender = true;
-            html = html.replace(/<\S[^><]*>/g, '');
-          }
-          ngModel.$setViewValue(html);
-          if (rerender) {
-            ngModel.$render();
-          }
-          if (html === '') {
-            // the cursor disappears if the contents is empty
-            // so we need to refocus
-            $timeout(function(){
-              element[0].blur();
-              element[0].focus();
-            });
-          }
-        });
-      });
-
-      // model -> view
-      var oldRender = ngModel.$render;
+      // Specify how UI should be updated
       ngModel.$render = function() {
-        var el, el2, range, sel;
-        if (!!oldRender) {
-          oldRender();
-        }
-        var html = ngModel.$viewValue || '';
-        if (opts.stripTags) {
-          html = html.replace(/<\S[^><]*>/g, '');
-        }
-
-        element.html(html);
-        if (opts.moveCaretToEndOnChange) {
-          el = element[0];
-          range = document.createRange();
-          sel = window.getSelection();
-          if (el.childNodes.length > 0) {
-            el2 = el.childNodes[el.childNodes.length - 1];
-            range.setStartAfter(el2);
-          } else {
-            range.setStartAfter(el);
-          }
-          range.collapse(true);
-          sel.removeAllRanges();
-          sel.addRange(range);
-        }
+        element.html($sce.getTrustedHtml(ngModel.$viewValue || ''));
       };
-      if (opts.selectNonEditable) {
-        element.bind('click', function(e) {
-          var range, sel, target;
-          target = e.toElement;
-          if (target !== this && angular.element(target).attr('contenteditable') === 'false') {
-            range = document.createRange();
-            sel = window.getSelection();
-            range.setStartBefore(target);
-            range.setEndAfter(target);
-            sel.removeAllRanges();
-            sel.addRange(range);
-          }
-        });
+
+      // Listen for change events to enable binding
+      element.on('blur keyup change', function() {
+        scope.$evalAsync(read);
+      });
+      read(); // initialize
+
+      // Write data to the model
+      function read() {
+        var html = element.html();
+        // When we clear the content editable the browser leaves a <br> behind
+        // If strip-br attribute is provided then we strip this out
+        if ( attrs.stripBr && html == '<br>' ) {
+          html = '';
+        }
+        ngModel.$setViewValue(html);
       }
     }
   };
-  }
-];
+}]);
