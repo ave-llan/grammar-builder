@@ -1,6 +1,6 @@
 'use strict';
 var angular = require('angular')
-  , builder = require('./components/builder/builderctrl.js');
+  , builder = require('./components/builder/index.js');
 
 console.log('builder.name:', builder.name);
 /**
