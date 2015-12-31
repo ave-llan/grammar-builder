@@ -12,7 +12,7 @@ var gulp         = require('gulp')
 
 // using vinyl-source-stream:
 gulp.task('browserify', function () {
-  var bundleStream = browserify('./src/app/app.module.js').bundle();
+  var bundleStream = browserify('./src/app').bundle();
 
   bundleStream
     .pipe(source('index.js'))
