@@ -18,6 +18,7 @@
   "homepage": "https://github.com/jrleszcz/grammar-builder#readme",
   "dependencies": {
     "angular": "^1.4.8",
+    "angular-sanitize": "^1.4.8",
     "angular-ui-router": "^0.2.15",
     "grammar-graph": "^3.1.0"
   },
