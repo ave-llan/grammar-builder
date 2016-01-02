@@ -3,8 +3,9 @@
         ng-model="definitionPart"
         class="definitionPart"
         ng-change="changeDefinition($index, definitionPart)"
-        ng-keydown="handleKeydown($event.keyCode, $index)"
-        ng-class="{ 'non-terminal': isNonTerminal(definitionPart) }"
+        ng-keydown="handleKeydown($event, $index)"
+        ng-class="[ 'definition-part-' + $index,
+                   {'non-terminal': isNonTerminal(definitionPart)} ]"
         no-line-breaks="true">
   </span>
   <span class="seperator"
