@@ -13,7 +13,7 @@ var definitionDir = function() {
 
     templateUrl: 'partials/definition_template.html',
 
-    link: function(scope) {
+    link: function(scope, element) {
       scope.seperator = scope.seperator || ' ';  // default to one space
       scope.definitionParts = scope.wholeDefinition.split(scope.seperator);
 
@@ -21,12 +21,17 @@ var definitionDir = function() {
         return newDefinitionPart;
       };
 
-      scope.handleKeydown = function (keyCode, partIndex) {
-        console.log('handleKeydown:', keyCode, partIndex);
+      scope.handleKeydown = function ($event, partIndex) {
+        console.log('handleKeydown:', $event.keyCode, partIndex);
         console.log('seperator:', keycode(scope.seperator));
       };
 
+      scope.handleKeyUp = function ($event) {
+        console.log(scope.getCaretCharacterOffsetWithin($event.target));
+      };
+
       /**
+       * given an elemenet, finds the position of the cursor within that element
        * @see http://stackoverflow.com/questions/4811822/get-a-ranges-start-and-end-offsets-relative-to-its-parent-container/4812022#4812022
        */
       scope.getCaretCharacterOffsetWithin = function (element) {

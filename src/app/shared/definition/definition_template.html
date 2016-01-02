@@ -4,6 +4,7 @@
         class="definitionPart"
         ng-change="changeDefinition($index, definitionPart)"
         ng-keydown="handleKeydown($event, $index)"
+        ng-keyup="handleKeyUp($event, $index)"
         ng-class="[ 'definition-part-' + $index,
                    {'non-terminal': isNonTerminal(definitionPart)} ]"
         no-line-breaks="true">
