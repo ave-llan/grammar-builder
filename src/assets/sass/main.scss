@@ -40,3 +40,7 @@ h3 {
   font-size: 1.2em;
   opacity: 0.8;
 }
+
+[contenteditable]:focus {
+  outline: 0px solid transparent;
+}
