@@ -26,6 +26,9 @@ var definitionDir = function() {
         console.log('seperator:', keycode(scope.seperator));
       };
 
+      /**
+       * @see http://stackoverflow.com/questions/4811822/get-a-ranges-start-and-end-offsets-relative-to-its-parent-container/4812022#4812022
+       */
       scope.getCaretCharacterOffsetWithin = function (element) {
         var caretOffset = 0;
         var doc = element.ownerDocument || element.document;
