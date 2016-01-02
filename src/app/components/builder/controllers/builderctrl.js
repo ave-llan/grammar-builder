@@ -25,6 +25,7 @@ var BuilderCtrl = [ '$scope', '$interval',
 
     // is the given symbol a non-terminal?
     $scope.isNonTerminal = function (symbol) {
+      console.log('checking', symbol);
       return (symbol in $scope.grammar);
     };
 

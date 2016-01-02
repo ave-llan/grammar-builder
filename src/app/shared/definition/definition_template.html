@@ -3,5 +3,6 @@
       ng-model="definitionPart"
       class="definitionPart"
       ng-change="changeDefinition($index, definitionPart)"
+      ng-class="{ 'non-terminal': isNonTerminal(definitionPart) }"
       no-line-breaks="true">
 </span>

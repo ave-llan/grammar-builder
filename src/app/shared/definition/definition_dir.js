@@ -6,7 +6,8 @@ var definitionDir = function() {
 
     scope: {
       wholeDefinition: '=definition',
-      seperator: '='
+      seperator: '=',
+      isNonTerminal: '='
     },
 
     templateUrl: 'partials/definition_template.html',
@@ -18,6 +19,7 @@ var definitionDir = function() {
       scope.changeDefinition = function (index, newDefinitionPart) {
         console.log('changed:', index, newDefinitionPart);
       };
+
     }
   };
 };
