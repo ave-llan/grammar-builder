@@ -1,3 +1,4 @@
+var keycode = require('keycode');
 
 var definitionDir = function() {
   return {
@@ -17,9 +18,13 @@ var definitionDir = function() {
       scope.definitionParts = scope.wholeDefinition.split(scope.seperator);
 
       scope.changeDefinition = function (index, newDefinitionPart) {
-        console.log('changed:', index, newDefinitionPart);
+        return newDefinitionPart;
       };
 
+      scope.handleKeydown = function (keyCode, partIndex) {
+        console.log('handleKeydown:', keyCode, partIndex);
+        console.log('seperator:', keycode(scope.seperator));
+      };
     }
   };
 };

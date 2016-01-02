@@ -3,6 +3,7 @@
         ng-model="definitionPart"
         class="definitionPart"
         ng-change="changeDefinition($index, definitionPart)"
+        ng-keydown="handleKeydown($event.keyCode, $index)"
         ng-class="{ 'non-terminal': isNonTerminal(definitionPart) }"
         no-line-breaks="true">
   </span>
