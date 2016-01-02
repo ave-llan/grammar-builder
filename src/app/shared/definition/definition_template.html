@@ -1,8 +1,13 @@
-<span ng-repeat="definitionPart in definitionParts track by $index"
-      contenteditable
-      ng-model="definitionPart"
-      class="definitionPart"
-      ng-change="changeDefinition($index, definitionPart)"
-      ng-class="{ 'non-terminal': isNonTerminal(definitionPart) }"
-      no-line-breaks="true">
+<span ng-repeat="definitionPart in definitionParts track by $index">
+  <span contenteditable
+        ng-model="definitionPart"
+        class="definitionPart"
+        ng-change="changeDefinition($index, definitionPart)"
+        ng-class="{ 'non-terminal': isNonTerminal(definitionPart) }"
+        no-line-breaks="true">
+  </span>
+  <span class="seperator"
+        ng-if="$index < definitionParts.length - 1">
+    {{ seperator }}
+  </span>
 </span>
