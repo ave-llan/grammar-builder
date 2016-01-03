@@ -13,7 +13,7 @@ var definitionDir = function() {
 
     templateUrl: 'partials/definition_template.html',
 
-    link: function(scope, element) {
+    link: function(scope) {
       scope.seperator = scope.seperator || ' ';  // default to one space
       scope.definitionParts = scope.wholeDefinition.split(scope.seperator);
 
