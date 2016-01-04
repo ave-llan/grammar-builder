@@ -23,11 +23,16 @@ var definitionDir = function() {
 
       scope.handleKeydown = function ($event, partIndex) {
         console.log('handleKeydown:', $event.keyCode, partIndex);
-        console.log('seperator:', keycode(scope.seperator));
+        // console.log('seperator:', keycode(scope.seperator));
       };
 
       scope.handleKeyUp = function ($event) {
-        console.log(scope.getCaretCharacterOffsetWithin($event.target));
+        if ($event.keyCode == keycode(scope.seperator)) {
+          console.log('creating new def part');
+        }
+        if (scope.getCaretCharacterOffsetWithin($event.target) == '0') {
+          console.log('moving to previous part');
+        }
       };
 
       /**
