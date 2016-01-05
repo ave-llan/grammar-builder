@@ -33,9 +33,10 @@ var BuilderCtrl = [ '$scope', '$interval',
     };
 
     // update the definition of a symbol at the given index
-    $scope.changeDefinition = function (symbol, index, definition) {
-      $scope.grammar[symbol][index] = definition;
-      $scope.generateRandomSentence(); // make new sentence
+    $scope.editDefinition = function (symbol, index, definition) {
+      console.log('you clicked editDefinition', symbol, index, definition);
+      // $scope.grammar[symbol][index] = definition;
+      // $scope.generateRandomSentence(); // make new sentence
     };
 
     // add a word to the sample sentence
