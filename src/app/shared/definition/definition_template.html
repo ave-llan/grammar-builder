@@ -11,6 +11,10 @@
   </span>
   <span class="seperator"
         ng-if="$index < definitionParts.length - 1">
-    {{ seperator }}
   </span>
 </span>
+
+<div contenteditable
+     ng-model="wholeDefinition"
+     ng-bind-html="wholeDefinition | definitionHighlight:seperator:isNonTerminal">
+</div>
