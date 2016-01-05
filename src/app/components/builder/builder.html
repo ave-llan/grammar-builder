@@ -23,7 +23,8 @@
     </td>
     <td>
       <p ng-repeat="definition in definitions track by $index">
-        <definition definition="definition" is-non-terminal="isNonTerminal">
+        <definition definition="definition"
+                    is-non-terminal="isNonTerminal">
         </definition>
       </p>
     </td>
@@ -45,19 +46,6 @@
   <input type="submit"
          value="Define">
 </form>
-
-<!-- 
-<h3>Sample contenteditable input</h3>
-
-<div class="definition-form">
-  <span contenteditable="true"
-        id="symbol"
-        onClick="this.select();"
-        placeholder="symbol">Symbol
-  </span>
-  <i class="material-icons"
-     id="definition-arrow">arrow_forward</i>
-</div> -->
 
 <h3>A sample sentence from your grammar:</h3>
 <p>{{sentence}}</p>

@@ -1,8 +1,14 @@
-<span ng-repeat="definitionPart in definitionParts track by $index">
-  <span ng-class="[ {'non-terminal': isNonTerminal(definitionPart)} ]">
-    {{ definitionPart }}
-  </span>
-  <span class="seperator"
-        ng-if="$index < definitionParts.length - 1">
+<span ng->
+  <span ng-repeat="definitionPart in definitionParts track by $index">
+    <span ng-class="[ {'non-terminal': isNonTerminal(definitionPart)} ]">
+      {{ definitionPart }}
+    </span>
+    <span class="seperator"
+          ng-if="$index < definitionParts.length - 1">
+    </span>
   </span>
 </span>
+<span class="edit-button">
+  <i class="material-icons">edit</i>
+</span>
+
