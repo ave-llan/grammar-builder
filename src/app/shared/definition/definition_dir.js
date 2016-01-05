@@ -35,6 +35,10 @@ var definitionDir = function() {
         }
       };
 
+      scope.changeDefinition = function ($event) {
+        console.log('changed definition:', $event);
+      };
+
       /**
        * given an elemenet, finds the position of the cursor within that element
        * @see http://stackoverflow.com/questions/4811822/get-a-ranges-start-and-end-offsets-relative-to-its-parent-container/4812022#4812022

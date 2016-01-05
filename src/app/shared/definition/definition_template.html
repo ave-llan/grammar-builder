@@ -16,5 +16,6 @@
 
 <div contenteditable
      ng-model="wholeDefinition"
+     ng-change="changeDefinition($event)"
      ng-bind-html="wholeDefinition | definitionHighlight:seperator:isNonTerminal">
 </div>
