@@ -1,21 +1,8 @@
 <span ng-repeat="definitionPart in definitionParts track by $index">
-  <span contenteditable
-        ng-model="definitionPart"
-        class="definitionPart"
-        ng-change="changeDefinition($index, definitionPart)"
-        ng-keydown="handleKeydown($event, $index)"
-        ng-keyup="handleKeyUp($event, $index)"
-        ng-class="[ 'definition-part-' + $index,
-                   {'non-terminal': isNonTerminal(definitionPart)} ]"
-        no-line-breaks="true">
+  <span ng-class="[ {'non-terminal': isNonTerminal(definitionPart)} ]">
+    {{ definitionPart }}
   </span>
   <span class="seperator"
         ng-if="$index < definitionParts.length - 1">
   </span>
 </span>
-
-<div contenteditable
-     ng-model="wholeDefinition"
-     ng-change="changeDefinition($event)"
-     ng-bind-html="wholeDefinition | definitionHighlight:seperator:isNonTerminal">
-</div>
