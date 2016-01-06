@@ -46,6 +46,14 @@ var BuilderCtrl = [ '$scope', '$interval',
       // $scope.generateRandomSentence(); // make new sentence
     };
 
+    $scope.updateDefinition = function () {
+      $scope.grammar[$scope.targetDefinition.symbol][$scope.targetDefinition.index] = $scope.definition;
+    };
+
+    $scope.submitDefinitionEdit = function () {
+      $scope.cancelEdit(); // because the model will be updated as user types, we just need to cancel here
+    };
+
     $scope.cancelEdit = function () {
       $scope.editingDefinition = false;
       $scope.symbol = '';

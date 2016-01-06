@@ -31,7 +31,8 @@
     </td>
   </tr>
 </table>
-<form ng-submit="addNewDefinition(symbol, definition)"
+<form ng-submit="editingDefinition ? submitDefinitionEdit()
+                                   : addNewDefinition(symbol, definition)"
       class="definition-form">
   <input id="symbol"
          onClick="this.select();"
@@ -43,14 +44,16 @@
   <input id="definition"
          ng-model="definition"
          type="text"
-         placeholder="definition">
+         placeholder="definition"
+         ng-change="editingDefinition ? updateDefinition()
+                                      : true">
   
   <input ng-hide="editingDefinition"
          type="submit"
          value="Define">
   <span ng-show="editingDefinition">
     <input type="button" value="Redefine"
-           ng-click="submitDefinition">
+           ng-click="submitDefinitionEdit()">
     <input type="button" value="Cancel"
            ng-click="cancelEdit()">
   </span>
