@@ -25,7 +25,9 @@
       <p ng-repeat="definition in definitions track by $index">
         <definition definition="definition"
                     is-non-terminal="isNonTerminal"
-                    ng-click="editDefinition(symbol, $index, definition)">
+                    ng-click="editDefinition(symbol, $index, definition)"
+                    ng-class="{ 'deemphasized-definition': editingDefinition && !isEditTarget(symbol, $index),
+                                'edit-definition-target': editingDefinition && isEditTarget(symbol, $index) }">
         </definition>
       </p>
     </td>

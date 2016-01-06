@@ -60,6 +60,17 @@ var BuilderCtrl = [ '$scope', '$interval',
       $scope.definition = '';
     };
 
+    // is this definition being edited? 
+    $scope.isEditTarget = function (symbol, definitionIndex) {
+      if ($scope.editingDefinition) {
+        if ($scope.targetDefinition.symbol == symbol &&
+            $scope.targetDefinition.index == definitionIndex) {
+          return true;
+        }
+      }
+      return false;
+    };
+
     // set target definition to the specific symbol and index for live previews
     function setTargetDefinition (symbol, index) {
       $scope.targetDefinition.symbol = symbol;
