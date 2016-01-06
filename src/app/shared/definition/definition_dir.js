@@ -17,6 +17,11 @@ var definitionDir = function() {
       scope.seperator = scope.seperator || ' ';  // default to one space
       scope.definitionParts = scope.wholeDefinition.split(scope.seperator);
 
+      scope.$watch(function (scope) { return scope.wholeDefinition; },
+                   function (newDef) {
+                     scope.definitionParts = newDef.split(scope.seperator);
+                   });
+
       scope.changeDefinition = function (index, newDefinitionPart) {
         return newDefinitionPart;
       };
