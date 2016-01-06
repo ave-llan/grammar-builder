@@ -44,8 +44,18 @@
          ng-model="definition"
          type="text"
          placeholder="definition">
-  <input type="submit"
+  
+  <input ng-hide="editingDefinition"
+         type="submit"
          value="Define">
+  <span ng-show="editingDefinition">
+    <input type="button" value="Redefine"
+           ng-click="submitDefinition">
+    <input type="button" value="Cancel"
+           ng-click="cancelEdit">
+  </span>
+  
+
 </form>
 
 <h3>A sample sentence from your grammar:</h3>

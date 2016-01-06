@@ -6,10 +6,13 @@ var BuilderCtrl = [ '$scope', '$interval',
     $scope.grammar = {Animal: ['Dog', 'Cat', 'Horse', 'Zebra Horse', 'Cow with Spots'], 'Dog': ['Husky', 'Weimaraner', 'Chihuahua']};
     $scope.startSymbol;      // where should guides start their construction?
     $scope.sentence;         // a sample sentence from this grammar
+    $scope.editingDefinition = false;  // is an already defined definition being edited?
+    $scope.targetDefinition = {symbol: null, index: null };
 
     var graph;               // a grammarGraph made with current grammar
     var guide;               // the current guide
     var sentenceInterval;    // sentence refresh promosie
+
 
     // add a new definition to grammar and refresh guide
     $scope.addNewDefinition = function (symbol, definition) {
@@ -37,9 +40,23 @@ var BuilderCtrl = [ '$scope', '$interval',
       console.log('you clicked editDefinition', symbol, index, definition);
       $scope.symbol = symbol;
       $scope.definition = $scope.grammar[symbol][index];
+      setTargetDefinition(symbol, index);
+      $scope.editingDefinition = true;
       // $scope.grammar[symbol][index] = definition;
       // $scope.generateRandomSentence(); // make new sentence
     };
+
+    $scope.cancelEdit = function () {
+      $scope.editingDefinition = false;
+      $scope.symbol = '';
+      $scope.definition = '';
+    };
+
+    // set target definition to the specific symbol and index for live previews
+    function setTargetDefinition (symbol, index) {
+      $scope.targetDefinition.symbol = symbol;
+      $scope.targetDefinition.index = index;
+    }
 
     // add a word to the sample sentence
     function addWord () {
