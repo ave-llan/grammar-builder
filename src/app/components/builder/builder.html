@@ -52,10 +52,8 @@
          type="submit"
          value="Define">
   <span ng-show="editingDefinition">
-    <input type="button" value="Redefine"
+    <input type="button" value="{{definition.length > 0 ? 'Redefine' : 'Remove'}}"
            ng-click="submitDefinitionEdit()">
-    <input type="button" value="Cancel"
-           ng-click="cancelEdit()">
   </span>
   
 
