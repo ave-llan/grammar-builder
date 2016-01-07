@@ -16,7 +16,16 @@ gulp.task('browserify', function () {
 
   bundleStream
     .pipe(source('index.js'))
-    // .pipe(streamify(uglify()))
+    .pipe(rename('bundle.js'))
+    .pipe(gulp.dest('./dist/js'));
+});
+
+gulp.task('browserify-minify', function () {
+  var bundleStream = browserify('./src/app').bundle();
+
+  bundleStream
+    .pipe(source('index.js'))
+    .pipe(streamify(uglify()))
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest('./dist/js'));
 });
@@ -30,8 +39,15 @@ gulp.task('copy-html', function () {
 });
 
 gulp.task('copy-images', function () {
-  gulp.src('./src/img/*')
-    .pipe(gulp.dest('dist/img'));
+  gulp.src('./src/assets/images/*')
+    .pipe(gulp.dest('dist/assets/images'));
+});
+
+gulp.task('copy-data', function () {
+  gulp.src('./src/assets/data/*')
+    .pipe(gulp.dest('./dist/assets/data'));
+  gulp.src('./src/assets/data/grammars/*.json')
+    .pipe(gulp.dest('./dist/assets/data/grammars'));
 });
 
 gulp.task('styles', function () {
@@ -52,11 +68,6 @@ gulp.task('browser-sync', function () {
   });
 });
 
-gulp.task('build', function () {
-  gulp.src('dist/index.html')
-    .pipe(gulp.dest('./dist'));
-});
-
 gulp.task('lint', function () {
   return gulp.src(['src/**/*.js','!node_modules/**'])
     .pipe(eslint())
@@ -64,7 +75,13 @@ gulp.task('lint', function () {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('default', ['copy-html', 'copy-images', 'styles', 'lint', 'browserify'], function () {
+// build for distribution
+gulp.task('build', ['copy-html', 'copy-images', 'copy-data', 'styles', 'lint', 'browserify-minify'], function () {
+  gulp.src('dist/index.html')
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('default', ['copy-html', 'styles', 'lint', 'browserify'], function () {
   gulp.watch('src/assets/sass/**/*.scss', ['styles']);
   gulp.watch('src/**/*.js', ['lint', 'browserify']);
   gulp.watch('src/**/*.html', ['copy-html']);
