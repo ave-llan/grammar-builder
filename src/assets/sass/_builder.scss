@@ -2,6 +2,7 @@ $non-terminal-color: #3182bd;
 $symbol-color: #8E8E8E;
 $start-symbol: #31a354;
 $bottom-input-border: #BFBFBF;
+$seperator-hover: #DF3121;
 
 .definition-form {
   input[type=text] {
@@ -66,6 +67,12 @@ definition {
     .edit-button {
       display: inline;
     }
+  }
+}
+
+.seperator {
+  &:hover {
+    background-color: $seperator-hover;
   }
 }
 
