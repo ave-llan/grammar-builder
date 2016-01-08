@@ -68,11 +68,19 @@ var BuilderCtrl = [ '$scope', '$interval', '$http',
     };
 
     // is this definition being edited? 
+    /**
+     *
+     * @param {string} symbol - the symbol in question
+     * @param {number} [definitionIndex] - optional definition index
+     * @returns {boolean} if just symbol, is this the target symbol? else
+     */
     $scope.isEditTarget = function (symbol, definitionIndex) {
-      if ($scope.editingDefinition) {
-        if ($scope.targetDefinition.symbol == symbol &&
+      if ($scope.editingDefinition && $scope.targetDefinition.symbol == symbol) {
+        if (typeof definitionIndex !== 'undefined' &&
             $scope.targetDefinition.index == definitionIndex) {
           return true;
+        } else {
+          return true; // no definitionIndex provided, and symbol matches
         }
       }
       return false;

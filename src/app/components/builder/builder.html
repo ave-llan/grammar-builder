@@ -14,7 +14,11 @@
     <td>
       <a ng-click="editNonTerminal(symbol)">
         <span class="non-terminal definition"
-                    ng-class="{'start-symbol': (symbol == startSymbol)}">{{ symbol }}</span>
+              ng-class="{       'start-symbol': (symbol == startSymbol),
+                          'edit-symbol-target': editingDefinition && isEditTarget(symbol),
+                         'deemphasized-symbol': editingDefinition && !isEditTarget(symbol)
+                         }"
+        >{{ symbol }}</span>
       </a>
     </td>
     <td>
