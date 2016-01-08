@@ -75,12 +75,15 @@ var BuilderCtrl = [ '$scope', '$interval', '$http',
      * @returns {boolean} if just symbol, is this the target symbol? else
      */
     $scope.isEditTarget = function (symbol, definitionIndex) {
-      if ($scope.editingDefinition && $scope.targetDefinition.symbol == symbol) {
-        if (typeof definitionIndex !== 'undefined' &&
+      if (!$scope.editingDefinition) return false;
+
+      if (typeof definitionIndex === 'undefined') {
+        if ($scope.targetDefinition.symbol == symbol)
+          return true;
+      } else {
+        if ($scope.targetDefinition.symbol == symbol &&
             $scope.targetDefinition.index == definitionIndex) {
           return true;
-        } else {
-          return true; // no definitionIndex provided, and symbol matches
         }
       }
       return false;
