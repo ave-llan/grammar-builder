@@ -2,6 +2,7 @@
 var angular = require('angular')
   , directives = require('./shared/app.directives.js')
   , filters = require('./shared/filters/app.filters.js')
+  , constants = require('./shared/constants/app.constants.js')
   , builder = require('./components/builder');
 
 /**
@@ -12,6 +13,7 @@ var grammarBuilderApp = angular.module('grammarBuilder', [
   require('angular-ui-router'),
   directives.name,
   filters.name,
+  constants.name,
   builder.name
 ]);
 

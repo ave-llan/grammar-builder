@@ -1,7 +1,9 @@
 var GrammarGraph = require('grammar-graph');
 
-var BuilderCtrl = [ '$scope', '$interval', '$http',
-  function($scope , $interval, $http ) {
+var BuilderCtrl = [ '$scope', '$interval', '$http', 'TopoSort',
+  function($scope , $interval, $http, TopoSort ) {
+    $scope.topo = TopoSort;
+
     $scope.grammar = {};
 
     // for now, pull sample grammar
