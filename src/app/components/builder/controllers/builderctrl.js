@@ -89,6 +89,15 @@ var BuilderCtrl = [ '$scope', '$interval', '$http',
       return false;
     };
 
+    $scope.generateRandomSentence = function () {
+      $interval.cancel(sentenceInterval);
+      graph = new GrammarGraph($scope.grammar); // refresh guide
+      guide = graph.createGuide($scope.startSymbol);
+
+      $scope.sentence = '';
+      sentenceInterval = $interval(addWord, 1000);
+    };
+
     // set target definition to the specific symbol and index for live previews
     function setTargetDefinition (symbol, index) {
       $scope.targetDefinition.symbol = symbol;
@@ -109,16 +118,8 @@ var BuilderCtrl = [ '$scope', '$interval', '$http',
         }
       }
     }
-
-    $scope.generateRandomSentence = function () {
-      $interval.cancel(sentenceInterval);
-      graph = new GrammarGraph($scope.grammar); // refresh guide
-      guide = graph.createGuide($scope.startSymbol);
-
-      $scope.sentence = '';
-      sentenceInterval = $interval(addWord, 1000);
-    };
   }
+
 ];
 
 module.exports = BuilderCtrl;
