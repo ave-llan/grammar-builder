@@ -81,7 +81,7 @@ gulp.task('build', ['copy-html', 'copy-images', 'copy-data', 'styles', 'lint', '
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', ['copy-html', 'styles', 'lint', 'browserify'], function () {
+gulp.task('default', ['copy-html', 'copy-data', 'styles', 'lint', 'browserify'], function () {
   gulp.watch('src/assets/sass/**/*.scss', ['styles']);
   gulp.watch('src/**/*.js', ['lint', 'browserify']);
   gulp.watch('src/**/*.html', ['copy-html']);
