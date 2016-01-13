@@ -1,6 +1,7 @@
 'use strict';
 var angular = require('angular')
   , directives = require('./shared/app.directives.js')
+  , services = require('./shared/services/app.services.js')
   , filters = require('./shared/filters/app.filters.js')
   , constants = require('./shared/constants/app.constants.js')
   , builder = require('./components/builder');
@@ -11,6 +12,7 @@ var angular = require('angular')
 
 var grammarBuilderApp = angular.module('grammarBuilder', [
   require('angular-ui-router'),
+  services.name,
   directives.name,
   filters.name,
   constants.name,
