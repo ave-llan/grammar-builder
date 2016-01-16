@@ -88,4 +88,8 @@ definition.self-definition-error {
   span span span {
     color: $seperator-hover !important;
   }
+  &::after {
+    content: "(do not define a word to equal itself)";
+    color:  #DF9371;
+  }
 }
