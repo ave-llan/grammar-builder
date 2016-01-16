@@ -83,3 +83,9 @@ definition {
 .deemphasized-definition, .deemphasized-symbol {
   opacity: 0.3;
 }
+
+definition.self-definition-error {
+  span span span {
+    color: $seperator-hover !important;
+  }
+}
