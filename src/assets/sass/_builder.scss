@@ -89,7 +89,7 @@ definition.self-definition-error {
     color: $seperator-hover !important;
   }
   &::after {
-    content: "(do not define a word to equal itself)";
+    content: "(Error: do not define a word to equal itself)";
     color:  #DF9371;
   }
 }
