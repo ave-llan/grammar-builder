@@ -1,7 +1,8 @@
 var GrammarGraph = require('grammar-graph');
 
-var BuilderCtrl = [ '$scope', '$interval', '$http',
-  function($scope , $interval, $http ) {
+var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
+  function($scope , $interval, $http, grammarFactory) {
+    console.log(grammarFactory);
     $scope.grammar = {};
 
     // for now, pull sample grammar
