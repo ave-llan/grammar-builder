@@ -1,4 +1,5 @@
-module.exports = [ function grammarFactory () {
+module.exports = [ '$http',
+function grammarFactory ($http) {
   var grammars = {};  // dictionary of grammars
   var current;        // the currently active grammar
 
@@ -12,7 +13,7 @@ module.exports = [ function grammarFactory () {
     this.name = name;
   }
 
-  return {
+  var methods = {
     newGrammar: function (name) {
       if (name in grammars)
         throw new Error(name + ' grammar already exists.');
@@ -46,4 +47,6 @@ module.exports = [ function grammarFactory () {
     }
 
   };
+
+  return methods;
 }];
