@@ -1,5 +1,5 @@
 module.exports = [ '$http',
-function grammarFactory ($http) {
+function grammarFactory () {
   var grammars = {};  // dictionary of grammars
   var current;        // the currently active grammar
 
@@ -18,20 +18,14 @@ function grammarFactory ($http) {
       if (name in grammars)
         throw new Error(name + ' grammar already exists.');
       grammars[name] = new Grammar(name);
+      if (!current) current = grammars[name];
     },
 
     /**
      * @returns {string} the name of the currently active grammar
      */
     current: function () {
-      return current.name;
-    },
-
-    /**
-     * @returns {string[]} the names of grammars
-     */
-    grammars: function () {
-      return Object.keys(grammars);
+      return current;
     },
 
     setGrammar: function (name) {
@@ -40,6 +34,12 @@ function grammarFactory ($http) {
       current = grammars[name];
     },
 
+    /**
+     * @returns {string[]} the names of grammars
+     */
+    grammars: function () {
+      return Object.keys(grammars);
+    },
     setStartSymbol: function (startSymbol) {
       if (!(startSymbol in current.grammar))
         throw new Error(startSymbol + ' is not a symbol in ' + current.name);
