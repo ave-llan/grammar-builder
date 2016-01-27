@@ -71,16 +71,15 @@
 
   </form>
 
-    <button href="#" ng-click="setView('json')">View JSON</button>
 </div>
 
 
 <!-- <h3>A sample sentence from your grammar:</h3>
 <p>{{sentence}}</p> -->
-
-<pre ng-if="view == 'json'">
-  <button href="#" ng-click="setView('builder')">View builder</button>
-  {{grammar | json:4}}
+<div ng-if="view =='json'">
+  <pre>
+    {{grammar | json:4}}
   </pre>
+</div>
 
-
+<a href="#" ng-click="setView(view == 'json' ? 'builder' : 'json')">{{view == 'json' ? 'View builder' : 'View JSON'}}</a>
