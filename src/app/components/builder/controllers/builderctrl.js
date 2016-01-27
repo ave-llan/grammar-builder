@@ -5,6 +5,7 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
     console.log(grammarFactory);
     $scope.grammar = {};
     $scope.title = 'Your first grammar';
+    $scope.view = 'builder';
 
     // for now, pull sample grammar
     $http.get('./assets/data/grammars/sample-grammar.json').then(function (response) {
@@ -22,7 +23,6 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
     var guide;               // the current guide
     var sentenceInterval;    // sentence refresh promosie
 
-
     // add a new definition to grammar and refresh guide
     $scope.addNewDefinition = function (symbol, definition) {
       if (!(symbol && definition)) return;
@@ -34,6 +34,11 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
 
       $scope.generateRandomSentence();
     };
+
+    $scope.setView = function (view) {
+      console.log('setting view:', view);
+      $scope.view = view;
+    }
 
     // is the given symbol a non-terminal?
     $scope.isNonTerminal = function (symbol) {

@@ -1,78 +1,86 @@
-<div class="grammar-title">
-  <input id="title"
-         ng-model="title"
-         type="text"
-         placeholder="enter a title"
-         title="edit title">
+<div ng-if="view == 'builder'">
+  <div class="grammar-title">
+    <input id="title"
+           ng-model="title"
+           type="text"
+           placeholder="enter a title"
+           title="edit title">
+  </div>
+
+  <div ng-show="startSymbol">
+    Starting Symbol:
+    <select ng-model="startSymbol"
+            ng-change="generateRandomSentence()">
+      <option ng-repeat="(symbol, _) in grammar">{{ symbol }}</option>
+    </select>
+  </div>
+  <table>
+    <tr ng-repeat="(symbol, definitions) in grammar">
+      <td>
+        <a ng-click="editNonTerminal(symbol)">
+          <span class="non-terminal definition"
+                ng-class="{       'start-symbol': (symbol == startSymbol),
+                            'edit-symbol-target': editingDefinition && isEditTarget(symbol),
+                           'deemphasized-symbol': editingDefinition && !isEditTarget(symbol)
+                           }"
+          >{{ symbol }}</span>
+        </a>
+      </td>
+      <td>
+        <i class="material-icons"
+           id="definition-arrow">arrow_forward</i>
+      </td>
+      <td>
+        <p ng-repeat="definition in definitions track by $index">
+          <definition definition="definition"
+                      is-non-terminal="isNonTerminal"
+                      ng-click="editDefinition(symbol, $index, definition)"
+                      ng-class="{ 'deemphasized-definition': editingDefinition && !isEditTarget(symbol, $index),
+                                  'edit-definition-target': editingDefinition && isEditTarget(symbol, $index),
+                                  'self-definition-error' : symbol == definition }">
+          </definition>
+        </p>
+      </td>
+    </tr>
+  </table>
+  <form ng-submit="editingDefinition ? submitDefinitionEdit()
+                                     : addNewDefinition(symbol, definition)"
+        class="definition-form">
+    <input id="symbol"
+           onClick="this.select();"
+           ng-model="symbol"
+           type="text"
+           placeholder="symbol">
+    <i class="material-icons"
+       id="definition-arrow">arrow_forward</i>
+    <input id="definition"
+           ng-model="definition"
+           type="text"
+           placeholder="definition"
+           ng-change="editingDefinition ? updateDefinition()
+                                        : true">
+
+    <input ng-hide="editingDefinition"
+           type="submit"
+           value="Define">
+    <span ng-show="editingDefinition">
+      <input type="button" value="{{definition.length > 0 ? 'Redefine' : 'Remove'}}"
+             ng-click="submitDefinitionEdit()">
+    </span>
+
+
+  </form>
+
+    <button href="#" ng-click="setView('json')">View JSON</button>
 </div>
 
-<div ng-show="startSymbol">
-  Starting Symbol:
-  <select ng-model="startSymbol"
-          ng-change="generateRandomSentence()">
-    <option ng-repeat="(symbol, _) in grammar">{{ symbol }}</option>
-  </select>
-</div>
-<table>
-  <tr ng-repeat="(symbol, definitions) in grammar">
-    <td>
-      <a ng-click="editNonTerminal(symbol)">
-        <span class="non-terminal definition"
-              ng-class="{       'start-symbol': (symbol == startSymbol),
-                          'edit-symbol-target': editingDefinition && isEditTarget(symbol),
-                         'deemphasized-symbol': editingDefinition && !isEditTarget(symbol)
-                         }"
-        >{{ symbol }}</span>
-      </a>
-    </td>
-    <td>
-      <i class="material-icons"
-         id="definition-arrow">arrow_forward</i>
-    </td>
-    <td>
-      <p ng-repeat="definition in definitions track by $index">
-        <definition definition="definition"
-                    is-non-terminal="isNonTerminal"
-                    ng-click="editDefinition(symbol, $index, definition)"
-                    ng-class="{ 'deemphasized-definition': editingDefinition && !isEditTarget(symbol, $index),
-                                'edit-definition-target': editingDefinition && isEditTarget(symbol, $index),
-                                'self-definition-error' : symbol == definition }">
-        </definition>
-      </p>
-    </td>
-  </tr>
-</table>
-<form ng-submit="editingDefinition ? submitDefinitionEdit()
-                                   : addNewDefinition(symbol, definition)"
-      class="definition-form">
-  <input id="symbol"
-         onClick="this.select();"
-         ng-model="symbol"
-         type="text"
-         placeholder="symbol">
-  <i class="material-icons"
-     id="definition-arrow">arrow_forward</i>
-  <input id="definition"
-         ng-model="definition"
-         type="text"
-         placeholder="definition"
-         ng-change="editingDefinition ? updateDefinition()
-                                      : true">
-  
-  <input ng-hide="editingDefinition"
-         type="submit"
-         value="Define">
-  <span ng-show="editingDefinition">
-    <input type="button" value="{{definition.length > 0 ? 'Redefine' : 'Remove'}}"
-           ng-click="submitDefinitionEdit()">
-  </span>
-  
-
-</form>
 
 <!-- <h3>A sample sentence from your grammar:</h3>
-<p>{{sentence}}</p>
+<p>{{sentence}}</p> -->
 
-<pre>{{grammar | json:4}}</pre> -->
+<pre ng-if="view == 'json'">
+  <button href="#" ng-click="setView('builder')">View builder</button>
+  {{grammar | json:4}}
+  </pre>
 
 
