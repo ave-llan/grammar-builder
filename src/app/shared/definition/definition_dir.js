@@ -4,7 +4,7 @@ var definitionDir = function() {
     restrict: 'E',
 
     scope: {
-      wholeDefinition: '=definition',
+      wholeDefinition: '@definition',
       seperator: '=',
       isNonTerminal: '='
     },

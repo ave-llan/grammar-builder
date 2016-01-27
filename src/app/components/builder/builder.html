@@ -36,7 +36,7 @@
       </td>
       <td>
         <p ng-repeat="definition in definitions track by $index">
-          <definition definition="definition"
+          <definition definition="{{definition}}"
                       is-non-terminal="isNonTerminal"
                       ng-click="editDefinition(symbol, $index, definition)"
                       ng-class="{ 'deemphasized-definition': editingDefinition && !isEditTarget(symbol, $index),
@@ -61,7 +61,7 @@
            ng-model="definition"
            type="text"
            placeholder="definition"
-           ng-change="editingDefinition ? updateDefinition()
+           ng-change="editingDefinition ? updateDefinition(definition)
                                         : true">
 
     <input ng-hide="editingDefinition"

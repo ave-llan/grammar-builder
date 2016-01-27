@@ -1,8 +1,7 @@
 var GrammarGraph = require('grammar-graph');
 
 var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
-  function($scope , $interval, $http, grammarFactory) {
-    console.log(grammarFactory);
+  function($scope , $interval, $http) {
     $scope.grammar = {};
     $scope.title = 'Your first grammar';
     $scope.view = 'builder';
@@ -60,8 +59,11 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
       // $scope.generateRandomSentence(); // make new sentence
     };
 
-    $scope.updateDefinition = function () {
-      $scope.grammar[$scope.targetDefinition.symbol][$scope.targetDefinition.index] = $scope.definition;
+    $scope.updateDefinition = function (definition) {
+      console.log('updating Definition');
+      console.log('$scope.definition', $scope.definition);
+      console.log(definition);
+      $scope.grammar[$scope.targetDefinition.symbol][$scope.targetDefinition.index] = definition;
     };
 
     $scope.submitDefinitionEdit = function () {
@@ -72,9 +74,10 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
       $scope.editingDefinition = false;
       $scope.symbol = '';
       $scope.definition = '';
+      console.log('setting $scope.definition to empty');
     };
 
-    // is this definition being edited? 
+    // is this definition being edited?
     /**
      *
      * @param {string} symbol - the symbol in question
