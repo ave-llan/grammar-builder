@@ -35,7 +35,6 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
     };
 
     $scope.setView = function (view) {
-      console.log('setting view:', view);
       $scope.view = view;
     }
 
@@ -50,7 +49,6 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
 
     // update the definition of a symbol at the given index
     $scope.editDefinition = function (symbol, index, definition) {
-      console.log('you clicked editDefinition', symbol, index, definition);
       $scope.symbol = symbol;
       $scope.definition = $scope.grammar[symbol][index];
       setTargetDefinition(symbol, index);
@@ -60,9 +58,6 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
     };
 
     $scope.updateDefinition = function (definition) {
-      console.log('updating Definition');
-      console.log('$scope.definition', $scope.definition);
-      console.log(definition);
       $scope.grammar[$scope.targetDefinition.symbol][$scope.targetDefinition.index] = definition;
     };
 
