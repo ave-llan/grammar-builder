@@ -104,9 +104,27 @@ div.grammar-title {
     font-family: "PT sans", sans-serif;
     font-size: 2rem;
     border: none;
-    &:focus {
+    padding-right: 1.5rem;  // leave space for edit button
+
+    &:focus, &:hover {
       outline: none;
       border-bottom: 2px solid $bottom-input-border;
+      padding-bottom: -2px;
+    }
+  }
+
+
+  .edit-button {
+    display: none;
+    margin-left: -1.5rem;
+    i {
+      font-size: 1.2rem;
+      color: $symbol-color;
+    }
+  }
+  &:hover {
+    .edit-button {
+      display: inline;
     }
   }
 }
