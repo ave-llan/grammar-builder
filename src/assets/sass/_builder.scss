@@ -93,3 +93,22 @@ definition.self-definition-error {
     color:  #DF9371;
   }
 }
+
+div.grammar-title {
+  font-weight: normal;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: "PT sans", sans-serif;
+  cursor: pointer;
+  input[type=text] {
+    font-family: "PT sans", sans-serif;
+    font-size: 2rem;
+    border: none;
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $bottom-input-border;
+    }
+  }
+}
+
+

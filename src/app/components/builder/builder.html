@@ -1,6 +1,10 @@
-<h3>Your Grammar</h3>
-
-<h2>Build your grammar here</h2>
+<div class="grammar-title">
+  <input id="title"
+         ng-model="title"
+         type="text"
+         placeholder="enter a title"
+         title="edit title">
+</div>
 
 <div ng-show="startSymbol">
   Starting Symbol:
@@ -66,9 +70,9 @@
 
 </form>
 
-<h3>A sample sentence from your grammar:</h3>
+<!-- <h3>A sample sentence from your grammar:</h3>
 <p>{{sentence}}</p>
 
-<pre>{{grammar | json:4}}</pre>
+<pre>{{grammar | json:4}}</pre> -->
 
 
