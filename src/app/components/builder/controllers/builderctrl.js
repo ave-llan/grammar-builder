@@ -4,7 +4,7 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
   function($scope , $interval, $http, grammarFactory) {
     console.log(grammarFactory);
     $scope.grammar = {};
-    $scope.title = '';
+    $scope.title = 'Your first grammar';
 
     // for now, pull sample grammar
     $http.get('./assets/data/grammars/sample-grammar.json').then(function (response) {
