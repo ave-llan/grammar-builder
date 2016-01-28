@@ -36,7 +36,7 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
 
     $scope.setView = function (view) {
       $scope.view = view;
-    }
+    };
 
     // is the given symbol a non-terminal?
     $scope.isNonTerminal = function (symbol) {
@@ -48,7 +48,7 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
     };
 
     // update the definition of a symbol at the given index
-    $scope.editDefinition = function (symbol, index, definition) {
+    $scope.editDefinition = function (symbol, index) {
       $scope.symbol = symbol;
       $scope.definition = $scope.grammar[symbol][index];
       setTargetDefinition(symbol, index);
