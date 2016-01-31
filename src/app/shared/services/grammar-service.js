@@ -1,5 +1,5 @@
 module.exports = [ '$http',
-function grammarFactory () {
+function grammarService () {
   var grammars = {};  // dictionary of grammars
   var current;        // the currently active grammar
 

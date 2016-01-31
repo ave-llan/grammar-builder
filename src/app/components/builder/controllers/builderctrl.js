@@ -1,6 +1,6 @@
 var GrammarGraph = require('grammar-graph');
 
-var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarFactory',
+var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarService',
   function($scope , $interval, $http) {
     $scope.grammar = {};
     $scope.title = 'Your first grammar';

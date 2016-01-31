@@ -1,4 +1,4 @@
 var angular = require('angular');
 
 module.exports = angular.module('app.services', [])
-  .factory('grammarFactory', require('./grammar-factory.js'));
+  .factory('grammarService', require('./grammar-service.js'));
