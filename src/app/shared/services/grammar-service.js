@@ -37,8 +37,8 @@ function grammarService () {
     /**
      * @returns {string[]} the names of grammars
      */
-    grammars: function () {
-      return Object.keys(grammars);
+    getGrammars: function (cb) {
+      return cb(null, Object.keys(grammars));
     },
     setStartSymbol: function (startSymbol) {
       if (!(startSymbol in current.grammar))

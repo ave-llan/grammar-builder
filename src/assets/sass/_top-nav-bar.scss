@@ -1,0 +1,15 @@
+.top-nav-bar {
+  display: flex;
+  align-items: baseline;
+  font-family: "PT Sans", sans-serif;
+  background-color: #fbfbfb;
+  border-bottom: 2px solid #f4f4f4;
+  padding: 0.5rem 1rem;
+
+  .app-name {
+    font-size: 2rem;
+  }
+  .grammar-selector {
+    margin-left: 2rem;
+  }
+}
