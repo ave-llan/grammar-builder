@@ -1,5 +1,5 @@
 module.exports = [ '$http',
-function grammarService () {
+function grammarService ($http) {
   var grammars = {};  // dictionary of grammars
   var current;        // the currently active grammar
 
@@ -38,6 +38,14 @@ function grammarService () {
      * @returns {string[]} the names of grammars
      */
     getGrammars: function (cb) {
+      $http.get('./assets/data/grammars/sample-grammar.json').then(function (response) {
+        grammars['sandbox'] = new Grammar('sandbox');
+        grammars.sandbox.grammar = response.data;
+        cb(null, [grammars.sandbox]);
+      }, function (response) {
+        console.log('there was an error:', response);
+        cb(response);
+      });
       return cb(null, Object.keys(grammars));
     },
     setStartSymbol: function (startSymbol) {
