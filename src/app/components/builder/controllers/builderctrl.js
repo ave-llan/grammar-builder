@@ -1,18 +1,18 @@
 var GrammarGraph = require('grammar-graph');
 
 var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarService',
-  function($scope , $interval, $http) {
+  function($scope , $interval, $http, grammarService) {
     $scope.grammar = {};
     $scope.title = 'Your first grammar';
     $scope.view = 'builder';
 
-    // for now, pull sample grammar
-    $http.get('./assets/data/grammars/sample-grammar.json').then(function (response) {
-      $scope.grammar = response.data;
-      $scope.startSymbol = 'Sentence';
-    }, function (response) {
-      console.log('there was an error:', response);
-    });
+    // // for now, pull sample grammar
+    // $http.get('./assets/data/grammars/sample-grammar.json').then(function (response) {
+    //   $scope.grammar = response.data;
+    //   $scope.startSymbol = 'Sentence';
+    // }, function (response) {
+    //   console.log('there was an error:', response);
+    // });
     $scope.startSymbol;      // where should guides start their construction?
     $scope.sentence;         // a sample sentence from this grammar
     $scope.editingDefinition = false;  // is an already defined definition being edited?
@@ -123,6 +123,21 @@ var BuilderCtrl = [ '$scope', '$interval', '$http', 'grammarService',
         }
       }
     }
+
+    function onGrammarSet (error, grammarModel) {
+      console.log('onGrammarSet:', error, grammarModel);
+      if (!error) {
+        $scope.grammar = grammarModel.grammar;
+        console.log('$scope.grammar:', $scope.grammar);
+        $scope.startSymbol = grammarModel.start;
+        $scope.title = grammarModel.name;
+      }
+    }
+
+    function getGrammar () {
+      grammarService.get(onGrammarSet);
+    }
+    getGrammar();
   }
 
 ];

@@ -52,6 +52,13 @@ function grammarService ($http) {
       if (!(startSymbol in current.grammar))
         throw new Error(startSymbol + ' is not a symbol in ' + current.name);
       current.startSymbol = startSymbol;
+    },
+    get: function (cb) {
+      $http.get('./assets/data/grammars/sample-grammar.json').then(function (response) {
+        cb(null, response.data);
+      }, function (response) {
+        console.log('there was an error getting grammarModal:', response);
+      });
     }
 
   };
