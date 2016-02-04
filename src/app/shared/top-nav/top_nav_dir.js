@@ -8,7 +8,6 @@ var topNavDir = ['grammarService', function(grammarService) {
     templateUrl: 'partials/top_nav_template.html',
 
     link: function(scope) {
-      console.log('inside top nav dir');
       scope.grammars = [];
 
       function onGrammarsSet (error, grammars) {
