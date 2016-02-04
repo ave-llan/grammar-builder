@@ -10,13 +10,13 @@ var topNavDir = ['grammarService', function(grammarService) {
     link: function(scope) {
       scope.grammars = [];
 
-      function onGrammarsSet (error, grammars) {
+      function onGrammarNamesSet (error, grammars) {
         console.log('onGrammarsSet:', error, grammars);
         scope.grammars = grammars;
       }
 
       function init () {
-        grammarService.getGrammars(onGrammarsSet);
+        grammarService.getGrammars(onGrammarNamesSet);
       }
 
       init();
