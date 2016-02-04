@@ -1,28 +1,33 @@
 {
-  "Sentence": [
-    "NounPhrase VerbPhrase"
-  ],
-  "NounPhrase": [
-    "the Noun",
-    "the Noun RelativeClause"
-  ],
-  "VerbPhrase": [
-    "Verb",
-    "Verb NounPhrase"
-  ],
-  "RelativeClause": [
-    "that VerbPhrase"
-  ],
-  "Noun": [
-    "dog",
-    "cat",
-    "bird",
-    "squirrel"
-  ],
-  "Verb": [
-    "befriended",
-    "loved",
-    "ate",
-    "attacked"
-  ]
+  "name": "sandbox",
+  "start": "Sentence",
+  "id": "sandbox123abc",
+  "grammar": {
+    "Sentence": [
+      "NounPhrase VerbPhrase"
+    ],
+    "NounPhrase": [
+      "the Noun",
+      "the Noun RelativeClause"
+    ],
+    "VerbPhrase": [
+      "Verb",
+      "Verb NounPhrase"
+    ],
+    "RelativeClause": [
+      "that VerbPhrase"
+    ],
+    "Noun": [
+      "dog",
+      "cat",
+      "bird",
+      "squirrel"
+    ],
+    "Verb": [
+      "befriended",
+      "loved",
+      "ate",
+      "attacked"
+    ]
+  }
 }
