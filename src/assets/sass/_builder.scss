@@ -130,4 +130,14 @@ div.grammar-title {
 
 .view-setter {
   margin-top: 5rem;
+  text-transform: uppercase;
+  a {
+    text-decoration: none;
+    color: $non-terminal-color;
+    &:hover {
+      color: #005A90;
+    }
+  }
 }
+
+
